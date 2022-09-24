@@ -1,0 +1,21 @@
+{
+  "name": "botv2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "discord.js": "14.4.0",
+    "glob": "7.2.0",
+    "node-fetch": "^3.2.10",
+    "undici": "5.10.0"
+  },
+  "devDependencies": {
+    "eslint": "8.23.1"
+  }
+}
