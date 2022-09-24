@@ -40,7 +40,7 @@ module.exports = {
             return (element.id == numb);
         })
 
-        let rarity;
+        let rarity
 
         if (nftNumber[0].rank >= 0.6*supply) {
         rarity = {
