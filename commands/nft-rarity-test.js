@@ -36,53 +36,52 @@ module.exports = {
 
         const listNft = result.data.items; // Path to useful data
 
+        // Get the 2nd option's value
         const nftNumber = listNft.filter(element => {
             return (element.id == numb);
         })
 
+        // Check how many objects to calculate the total supply
+        const supply = listNft.length
         let rarity
 
+        // Attribute a rarity rank
         if (nftNumber[0].rank >= 0.6*supply) {
         rarity = {
             value :'common',
-            image : 'lien vers l\'image',
+            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/un1.webp?token=GHSAT0AAAAAABYMG434GZMBZJG62GQERI4SYZPMYDQ',
             description : 'ton message de description'
         }
-        } else if (nftNumber[0].rank >= 0.4*supply && nftNumber[0].rank > 0.6*supply) {
+        } else if (nftNumber[0].rank >= 0.4*supply && nftNumber[0].rank < 0.6*supply) {
         rarity = {
             value :'uncommon',
-            image : 'lien vers l\'image',
+            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/un1.webp?token=GHSAT0AAAAAABYMG434GZMBZJG62GQERI4SYZPMYDQ',
             description : 'ton message de description'
         }
-        } else if (nftNumber[0].rank >= 0.35*supply && nftNumber[0].rank > 0.4*supply) {
+        } else if (nftNumber[0].rank >= 0.35*supply && nftNumber[0].rank < 0.4*supply) {
         rarity = {
             value :'rare',
-            image : 'lien vers l\'image',
-            description : 'ton message de description'
+            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/ra1.webp?token=GHSAT0AAAAAABYMG434FKW6WXWF7KH66WOGYZPMYDA',
         }
-        } else if (nftNumber[0].rank >= 0.15*supply && nftNumber[0].rank > 0.35*supply) {
+        } else if (nftNumber[0].rank >= 0.15*supply && nftNumber[0].rank < 0.35*supply) {
         rarity = {
             value :'epic',
-            image : 'lien vers l\'image',
-            description : 'ton message de description'
+            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/ep1.webp?token=GHSAT0AAAAAABYMG435C7RDWYR3H4MAQRBWYZPMYBQ',
         }
         } else if (nftNumber[0].rank >= 0.05*supply && nftNumber[0].rank > 0.15*supply) {
         rarity = {
             value :'legendary',
-            image : 'lien vers l\'image',
-            description : 'ton message de description'
+            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/leg1.webp?token=GHSAT0AAAAAABYMG434MJGLPJGI32AILM4KYZPMYCQ',
         }
-        } else if (nftNumber[0].rank >= 0.01*supply && nftNumber[0].rank > 0.05*supply) {
+        } else if (nftNumber[0].rank >= 1 && nftNumber[0].rank < 0.05*supply) {
         rarity = {
             value :'mythic',
-            image : 'lien vers l\'image',
-            description : 'ton message de description'
+            image : 'https://i.pinimg.com/736x/d2/25/20/d2252040acb315e14b5cd35860294b9a--heart-emoji-emojis.jpg'
         }
         } else{
         rarity = {
             value :'Unenregistred',
-            image : 'lien vers l\'image',
-            description : 'ton message de description'
+            image : 'https://2.bp.blogspot.com/-lvgbAev36Lo/Vcg9XL-cHWI/AAAAAAAASPw/9nYGzmg5Zaw/s640/erreur-404-2.png',
         }
         }
             
@@ -96,7 +95,10 @@ module.exports = {
         .setThumbnail(`${result.data.logo}`)
         .addFields(
             { name: '\u200B', value: '\u200B' },
-            { name: `🥇・Rank: ${nftNumber[0].rank}`, value: `|` },
+            { name: `🥇・Rank: ${nftNumber[0].rank} `, value: `|` },
+        )
+        .setImage(`${rarity.image}`)
+        .addFields(
             { name: `💼・Pieces: ${supply}`, value: `|` },
         )
         .setImage(`${nftNumber[0].image}`)
