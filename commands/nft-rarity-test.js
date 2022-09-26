@@ -49,34 +49,32 @@ module.exports = {
         if (nftNumber[0].rank >= 0.6*supply) {
         rarity = {
             value :'common',
-            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/un1.webp?token=GHSAT0AAAAAABYMG434GZMBZJG62GQERI4SYZPMYDQ',
-            description : 'ton message de description'
+            image : '<:com1:1023925991644598322><:com2:1023925993775300669><:com3:1023925995981508648><:com4:1023953774181621771>'
         }
         } else if (nftNumber[0].rank >= 0.4*supply && nftNumber[0].rank < 0.6*supply) {
         rarity = {
             value :'uncommon',
-            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/un1.webp?token=GHSAT0AAAAAABYMG434GZMBZJG62GQERI4SYZPMYDQ',
-            description : 'ton message de description'
+            image : '<:un1:1023953795639681094><:un2:1023926038008434718><:un3:1023926040294338611><:un4:1023953798026252361>'
         }
         } else if (nftNumber[0].rank >= 0.35*supply && nftNumber[0].rank < 0.4*supply) {
         rarity = {
             value :'rare',
-            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/ra1.webp?token=GHSAT0AAAAAABYMG434FKW6WXWF7KH66WOGYZPMYDA',
+            image : '<:ra1:1023953791290179604><:ra2:1023926029137485895><:ra3:1023926031389827122><:ra4:1023953793471234058>'
         }
         } else if (nftNumber[0].rank >= 0.15*supply && nftNumber[0].rank < 0.35*supply) {
         rarity = {
             value :'epic',
-            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/ep1.webp?token=GHSAT0AAAAAABYMG435C7RDWYR3H4MAQRBWYZPMYBQ',
+            image : '<:ep1:1023953777293807726><:ep2:1023926004957315155><:leg3:1023926016378425405><:leg4:1023953784214392853>'
         }
         } else if (nftNumber[0].rank >= 0.05*supply && nftNumber[0].rank > 0.15*supply) {
         rarity = {
             value :'legendary',
-            image : 'https://raw.githubusercontent.com/LoLoSenPai/Bot-Discord-Sol/main/assets/leg1.webp?token=GHSAT0AAAAAABYMG434MJGLPJGI32AILM4KYZPMYCQ',
+            image : '<:leg1:1023953781957873695><:leg2:1023926015174647868><:leg3:1023926016378425405><:leg4:1023953784214392853>'
         }
         } else if (nftNumber[0].rank >= 1 && nftNumber[0].rank < 0.05*supply) {
         rarity = {
             value :'mythic',
-            image : 'https://i.pinimg.com/736x/d2/25/20/d2252040acb315e14b5cd35860294b9a--heart-emoji-emojis.jpg'
+            image : '<:my1:1023953786907136100><:my2:1023926020253941842><:my3:1023926022535655515><:my4:1023953789138509824>'
         }
         } else{
         rarity = {
@@ -95,9 +93,9 @@ module.exports = {
         .setThumbnail(`${result.data.logo}`)
         .addFields(
             { name: '\u200B', value: '\u200B' },
-            { name: `🥇・Rank: ${nftNumber[0].rank} `, value: `|` },
+            { name: `🥇・Rank: ${nftNumber[0].rank}    ${rarity.image} `, value: `|` },
         )
-        .setImage(`${rarity.image}`)
+        // .setImage(rarity.image)
         .addFields(
             { name: `💼・Pieces: ${supply}`, value: `|` },
         )

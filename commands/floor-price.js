@@ -23,6 +23,6 @@ module.exports = {
         const collec = interaction.options.getString('collection');
         const floor = await request(`https://api-mainnet.magiceden.dev/v2/collections/${collec}/stats`);
         const { floorPrice, symbol } = await getJSONResponse(floor.body);
-        return interaction.reply({ content: `The floor price of ${symbol} is ${floorPrice / 1000000000} SOL`});
+        return interaction.reply({ content: `The floor price of ${symbol} is ${floorPrice / 1000000000} ◎`});
     },
 };
