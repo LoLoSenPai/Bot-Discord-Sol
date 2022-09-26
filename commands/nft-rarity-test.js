@@ -49,55 +49,61 @@ module.exports = {
         if (nftNumber[0].rank >= 0.6*supply) {
         rarity = {
             value :'common',
-            image : '<:com1:1023925991644598322><:com2:1023925993775300669><:com3:1023925995981508648><:com4:1023953774181621771>'
+            image : '<:common1:1024082214926942288><:common2:1024082217309306951><:common3:1024082219507142757>',
+            color : '#D1D1D1'
         }
         } else if (nftNumber[0].rank >= 0.4*supply && nftNumber[0].rank < 0.6*supply) {
         rarity = {
             value :'uncommon',
-            image : '<:un1:1023953795639681094><:un2:1023926038008434718><:un3:1023926040294338611><:un4:1023953798026252361>'
+            image : '<:uncommon1:1024082248879849522><:uncommon2:1024082250993774652><:uncommon3:1024082253489393705>',
+            color : '#0BF54E'
         }
         } else if (nftNumber[0].rank >= 0.35*supply && nftNumber[0].rank < 0.4*supply) {
         rarity = {
             value :'rare',
-            image : '<:ra1:1023953791290179604><:ra2:1023926029137485895><:ra3:1023926031389827122><:ra4:1023953793471234058>'
+            image : '<:rare1:1024082242345111642><:rare2:1024082244698132570><:rare3:1024082246824644708>',
+            color : '#0B8EF5'
         }
         } else if (nftNumber[0].rank >= 0.15*supply && nftNumber[0].rank < 0.35*supply) {
         rarity = {
             value :'epic',
-            image : '<:ep1:1023953777293807726><:ep2:1023926004957315155><:leg3:1023926016378425405><:leg4:1023953784214392853>'
+            image : '<:epic1:1024082222103416874><:epic2:1024082224150220892><:epic3:1024082226767474739>',
+            color : '#B20BF5'
         }
-        } else if (nftNumber[0].rank >= 0.05*supply && nftNumber[0].rank > 0.15*supply) {
+        } else if (nftNumber[0].rank >= 0.05*supply && nftNumber[0].rank < 0.15*supply) {
         rarity = {
             value :'legendary',
-            image : '<:leg1:1023953781957873695><:leg2:1023926015174647868><:leg3:1023926016378425405><:leg4:1023953784214392853>'
+            image : '<:legendary1:1024082228839448647><:legendary2:1024082231267963030><:legendary3:1024082233625170062>',
+            color : '#FF9900'
         }
         } else if (nftNumber[0].rank >= 1 && nftNumber[0].rank < 0.05*supply) {
         rarity = {
             value :'mythic',
-            image : '<:my1:1023953786907136100><:my2:1023926020253941842><:my3:1023926022535655515><:my4:1023953789138509824>'
+            image : '<:mythic1:1024082235751665684><:mythic2:1024082237815279716><:mythic3:1024082240029868152>',
+            color : '#F5340B'
         }
         } else{
         rarity = {
             value :'Unenregistred',
-            image : 'https://2.bp.blogspot.com/-lvgbAev36Lo/Vcg9XL-cHWI/AAAAAAAASPw/9nYGzmg5Zaw/s640/erreur-404-2.png',
+            image : '❌',
         }
         }
             
 
         const rarityEmbed = new EmbedBuilder()
-        .setColor(0x0099FF)
+        .setColor(`${rarity.color}`)
         .setTitle(`${nftNumber[0].name}`)
         .setURL(`${nftNumber[0].link}`)
-        .setAuthor({ name: 'Rarity checker', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+        .setAuthor({ name: 'Rarity checker', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://howrare.is' })
         .setDescription(`${nftNumber[0].description}`)
         .setThumbnail(`${result.data.logo}`)
         .addFields(
             { name: '\u200B', value: '\u200B' },
-            { name: `🥇・Rank: ${nftNumber[0].rank}    ${rarity.image} `, value: `|` },
+            { name: `🥇・Rank: ${nftNumber[0].rank}    ${rarity.image} `, value: `\u200B` },
         )
         // .setImage(rarity.image)
         .addFields(
-            { name: `💼・Pieces: ${supply}`, value: `|` },
+            { name: `💼・Pieces: ${supply}`, value: `\u200B` },
         )
         .setImage(`${nftNumber[0].image}`)
         .setFooter({ text: 'Tools powered by LoLo Labs', iconURL: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png' });

@@ -12,7 +12,7 @@ module.exports = {
                 
     async execute(interaction) {
         
-        let answers = [`Hell Yeah MFers`, `Forgot it dude !`, `Ummmmmmm... I don't really know...`];
+        let answers = [`Hell Yeah MFers`, `Oublie frérot !`, `Ummmmmmm... Je ne sais pas trop...`];
         
         await interaction.reply(answers[Math.floor(Math.random() * answers.length)]);
 	},
