@@ -31,7 +31,7 @@ module.exports = {
         
         const collec = interaction.options.getString('collection'); // 1st option's value
         const numb = interaction.options.getInteger('number'); // 2nd option's value
-        const rarityRequest = await request(`https://api.howrare.is/v0.1/collections/${collec}`); //API filtered by 1st option
+        const rarityRequest = await request(`https://api.howrare.is/v0.1/collections/${collec.replace(' ', '')}`); //API filtered by 1st option
         const { result } = await getJSONResponse(rarityRequest.body); // API results
 
         const listNft = result.data.items; // Path to useful data -> all NFTs of a collection
