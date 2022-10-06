@@ -39,7 +39,7 @@ module.exports = {
     ); //API filtered by 1st option
     const { result } = await getJSONResponse(rarityRequest.body); // API results
 
-    if (result.api_code == 200) {
+    if (result.api_code != 404) {
       const listNft = result.data.items; // Path to useful data -> all NFTs of a collection
 
       // Get the 2nd option's value
