@@ -10,11 +10,15 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "discord.js": "14.4.0",
+    "@keyv/mongo": "^2.1.6",
+    "discord.js": "^14.4.0",
     "glob": "7.2.0",
     "keyv": "^4.5.0",
+    "mongoose": "^6.6.4",
     "mysql": "^2.18.1",
     "node-fetch": "^3.2.10",
+    "sequelize": "^6.24.0",
+    "sqlite3": "^5.1.2",
     "undici": "5.10.0"
   },
   "devDependencies": {

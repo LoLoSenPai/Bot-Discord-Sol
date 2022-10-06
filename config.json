@@ -1,6 +1,7 @@
 {
     "clientId": "1022125841150386319",
     "guildId": "960935113363976223",
-	"token": "MTAyMjEyNTg0MTE1MDM4NjMxOQ.Gt56bM.cEue8lS-PXRHpajedwAi29YHIoNBEw7XeH2L5Q"
+	"token": "MTAyMjEyNTg0MTE1MDM4NjMxOQ.Gt56bM.cEue8lS-PXRHpajedwAi29YHIoNBEw7XeH2L5Q",
+    "databaseToken": "mongodb+srv://discordbot:polakodu**18@datacluster.hdsgg4s.mongodb.net/?retryWrites=true&w=majority"
 }
 
