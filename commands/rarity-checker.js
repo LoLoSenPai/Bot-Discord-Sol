@@ -27,7 +27,7 @@ module.exports = {
     .addIntegerOption((option) =>
       option
         .setName("number")
-        .setDescription("Which mint address ?")
+        .setDescription("Which number ?")
         .setRequired(true)
     ),
 
@@ -39,7 +39,7 @@ module.exports = {
     ); //API filtered by 1st option
     const { result } = await getJSONResponse(rarityRequest.body); // API results
 
-    if (result.api_code != 404) {
+    if (result.api_code == 200) {
       const listNft = result.data.items; // Path to useful data -> all NFTs of a collection
 
       // Get the 2nd option's value
@@ -108,7 +108,7 @@ module.exports = {
         };
       } else {
         rarity = {
-          value: "Unenregistred",
+          value: "Unregistred",
           image: "❌",
         };
       }
@@ -119,7 +119,7 @@ module.exports = {
         .setURL(`${nftNumber[0].link}`)
         .setAuthor({
           name: "Rarity checker",
-          iconURL: "https://i.imgur.com/AfFp7pu.png",
+          iconURL: "https://www.creativeuncut.com/gallery-04/art/gs-djinn-mercury.jpg",
           url: "https://howrare.is",
         })
         .setDescription(`${result.data.description}`)
@@ -139,7 +139,7 @@ module.exports = {
             "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
         });
 
-      return interaction.reply({ embeds: [rarityEmbed] });
+      await interaction.reply({ embeds: [rarityEmbed] });
     }
     else {
         return interaction.reply({ content: 'Your collection doesn\'t exist or try to replace spaces by underscores' });

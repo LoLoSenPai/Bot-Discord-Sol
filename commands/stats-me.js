@@ -14,7 +14,7 @@ async function getJSONResponse(body) {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('statsme')
-		.setDescription('Check stats of a collection')
+		.setDescription('Check stats of a collection on MagicEden')
         .addStringOption(option =>
             option.setName('collection')
                 .setDescription('Which collection ?')
@@ -34,9 +34,6 @@ module.exports = {
         )
         .setFooter({ text: 'Tools powered by LoLo Labs', iconURL: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png' });
 
-        return interaction.reply({ embeds: [statsEmbed] });
-
-
-
+        await interaction.reply({ embeds: [statsEmbed] });
     },
 };

@@ -2,7 +2,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { token, databaseToken } = require('./config.json');
-// 795007593259991051 guilde lolosenpai
+// const dotenv = require('dotenv');
+// dotenv.config();
+// client.login(process.env.TOKEN);
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 

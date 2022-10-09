@@ -14,7 +14,7 @@ async function getJSONResponse(body) {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('statshr')
-		.setDescription('Check stats of a collection')
+		.setDescription('Check stats of a collection on HowRare')
         .addStringOption(option =>
             option.setName('collection')
                 .setDescription('Which collection ?')
@@ -24,15 +24,15 @@ module.exports = {
         const listCollections = await request(`https://api.howrare.is/v0.1/collections`);
         const { result } = await getJSONResponse(listCollections.body);
 
-        const nftCollections = result.data; // Path to useful data -> all NFTs of a collection
+        const nftCollections = result.data; // Path to useful data -> All collections
 
         const nftCollec = nftCollections.filter(element => {
-            return (element.me_key == collec);
+            return (element.me_key || element.name == collec);
         })
 
         const statshrEmbed = new EmbedBuilder()
         .setTitle(`${nftCollec[0].name}`)
-        .setAuthor({ name: 'Stats checker', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://howrare.is' })
+        .setAuthor({ name: 'Stats checker', iconURL: 'https://www.creativeuncut.com/gallery-16/art/gsdd-djinn-chill.jpg', url: 'https://howrare.is' })
         .setThumbnail(`https://api.howrare.is/${nftCollec[0].logo}`)
         .addFields(
             { name: '\u200B', value: '\u200B' },
@@ -43,12 +43,6 @@ module.exports = {
         )
         .setFooter({ text: 'Tools powered by LoLo Labs', iconURL: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png' });
 
-        return interaction.reply({ embeds: [statshrEmbed] });
-
-
-        
-
-
-
+        await interaction.reply({ embeds: [statshrEmbed] });
     },
 };

@@ -14,6 +14,6 @@ module.exports = {
         
         let answers = [`Hell Yeah MFers`, `Oublie frérot !`, `Ummmmmmm... Je ne sais pas trop...`];
         
-        await interaction.reply(data.option[0] `\n` + answers[Math.floor(Math.random() * answers.length)]);
+        await interaction.reply({ content : `${data.option[0]} \n `+` ${answers[Math.floor(Math.random() * answers.length)]}}`, ephemeral : false });
 	},
 };
