@@ -139,10 +139,10 @@ module.exports = {
             "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
         });
 
-      await interaction.reply({ embeds: [rarityEmbed] });
+    await interaction.reply({ embeds: [rarityEmbed] });
     }
     else {
-        return interaction.reply({ content: 'Your collection doesn\'t exist or try to replace spaces by underscores' });
+        await interaction.reply({ content: 'Your collection doesn\'t exist or try to replace spaces by underscores' });
     }
   },
 };
