@@ -21,6 +21,8 @@
     "node.js": "^0.0.1-security",
     "sequelize": "^6.24.0",
     "sqlite3": "^5.1.2",
+    "ts": "^0.2.2",
+    "ts-node": "^10.9.1",
     "undici": "5.10.0"
   },
   "devDependencies": {

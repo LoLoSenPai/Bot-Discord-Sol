@@ -24,9 +24,9 @@ module.exports = {
         const listCollections = await request(`https://api.howrare.is/v0.1/collections`);
         const { result } = await getJSONResponse(listCollections.body);
 
-        const nftCollections = result.data; // Path to useful data -> All collections
+        const listFiltered = result.data; // Path to useful data -> All collections
 
-        const nftCollec = nftCollections.filter(element => {
+        const nftCollec = listFiltered.filter(element => {
             return (element.me_key || element.name == collec);
         })
 

@@ -46,7 +46,6 @@ module.exports = {
       const nftNumber = listNft.filter(element => {
         return element.id == numb;
       });
-
       // Check how many objects to calculate the total supply
       const supply = listNft.length;
       let rarity;
@@ -131,7 +130,7 @@ module.exports = {
             value: `\u200B`,
           }
         )
-        .addFields({ name: `💼・Pieces: ${supply}`, value: `\u200B` })
+        .addFields({ name: `💼・Supply: ${supply}`, value: `\u200B` })
         .setImage(`${nftNumber[0].image}`)
         .setFooter({
           text: "Tools powered by LoLo Labs",
