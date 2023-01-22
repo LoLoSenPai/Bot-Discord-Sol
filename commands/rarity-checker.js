@@ -35,7 +35,7 @@ module.exports = {
     const collec = interaction.options.getString("collection"); // 1st option's value
     const numb = interaction.options.getInteger("number"); // 2nd option's value
     const rarityRequest = await request(
-      `https://api.howrare.is/v0.1/collections/${collec.split(' ').join('')}`
+      `https://api.howrare.is/v0.1/collections/${collec.split(" ").join("")}`
     ); //API filtered by 1st option
     const { result } = await getJSONResponse(rarityRequest.body); // API results
 
@@ -43,7 +43,7 @@ module.exports = {
       const listNft = result.data.items; // Path to useful data -> all NFTs of a collection
 
       // Get the 2nd option's value
-      const nftNumber = listNft.filter(element => {
+      const nftNumber = listNft.filter((element) => {
         return element.id == numb;
       });
       // Check how many objects to calculate the total supply
@@ -118,7 +118,8 @@ module.exports = {
         .setURL(`${nftNumber[0].link}`)
         .setAuthor({
           name: "Rarity checker",
-          iconURL: "https://www.creativeuncut.com/gallery-04/art/gs-djinn-mercury.jpg",
+          iconURL:
+            "https://www.creativeuncut.com/gallery-04/art/gs-djinn-mercury.jpg",
           url: "https://howrare.is",
         })
         .setDescription(`${result.data.description}`)
@@ -138,10 +139,12 @@ module.exports = {
             "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
         });
 
-    await interaction.reply({ embeds: [rarityEmbed] });
-    }
-    else {
-        await interaction.reply({ content: 'Your collection doesn\'t exist or try to replace spaces by underscores' });
+      await interaction.reply({ embeds: [rarityEmbed] });
+    } else {
+      await interaction.reply({
+        content:
+          "Your collection doesn't exist or try to replace spaces by underscores",
+      });
     }
   },
 };
