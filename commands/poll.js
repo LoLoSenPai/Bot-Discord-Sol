@@ -4,7 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("poll")
         .setDescription("Créer un sondage et l'envoyer dans un channel")
-        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+        // .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption(option =>
             option.setName("description")
                 .setDescription("Décris le sondage.")
