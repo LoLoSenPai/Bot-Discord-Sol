@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const config = require("../config.json");
+require('dotenv').config();
 
 module.exports = {
 	name: 'ready',
 	once: true,
 	async execute(client) {
-		await mongoose.connect(config.databaseToken || '', {
+		await mongoose.connect(config.process.env.databaseToken || '', {
 			keepAlive: true,
 		});
 		if (mongoose.connect) {
