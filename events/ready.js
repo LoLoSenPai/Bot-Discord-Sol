@@ -5,7 +5,7 @@ module.exports = {
 	name: 'ready',
 	once: true,
 	async execute(client) {
-		await mongoose.connect(config.process.env.databaseToken || '', {
+		await mongoose.connect(process.env.databaseToken || '', {
 			keepAlive: true,
 		});
 		if (mongoose.connect) {
