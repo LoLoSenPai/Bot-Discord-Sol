@@ -13,6 +13,7 @@
     "@keyv/mongo": "^2.1.6",
     "discord.js": "^14.4.0",
     "dotenv": "^16.0.3",
+    "fuse.js": "^6.6.2",
     "glob": "7.2.0",
     "keyv": "^4.5.0",
     "mongoose": "^6.6.4",

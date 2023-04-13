@@ -3,7 +3,7 @@ const { AttachmentBuilder, SlashCommandBuilder, EmbedBuilder } = require("discor
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("rare")
-        .setDescription("Check the rarity of your Hodlins")
+        .setDescription("Check the rarity of your Brozo")
         .addIntegerOption((option) =>
             option
                 .setName("number")
@@ -16,7 +16,7 @@ module.exports = {
         const collection = require('../rarity-check/sorted_collection.json');
         const TOTAL_NFTS = collection.length;
                 
-        let nft_rank = collection.findIndex(nft => nft.name === `Clerk #${numb}`||nft.name === `Branch #${numb}`||nft.name === `Analyst #${numb}`||nft.name === `Calculoner #${numb}`);
+        let nft_rank = collection.findIndex(nft => nft.name === `BROZO #${numb}`);
         
         if (nft_rank != -1) {
         
@@ -94,7 +94,7 @@ module.exports = {
                     iconURL: "https://www.creativeuncut.com/gallery-04/art/gs-djinn-mercury.jpg",
                     url: "https://lolo-labs.io",
                 })
-                .setThumbnail(`https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://creator-hub-prod.s3.us-east-2.amazonaws.com/hodlins_pfp_1672083334693.gif`)
+                .setThumbnail(`https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://bafybeihohurxddbgetxj27tix2qybruhxwvln52m45glq65e5tptlaboku.ipfs.nftstorage.link/`)
                 .addFields(
                     {   name: "\u200B", value: "\u200B" },
                     {
