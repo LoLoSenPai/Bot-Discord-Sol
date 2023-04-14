@@ -1,11 +1,5 @@
 'use strict'
 
-/*
-  Written by https://peninsola.io
-  Twitter - https://twitter.com/peninsolaio
-  Discord - https://discord.gg/YZ3XNGxYP9
-  Inspired by https://MoonRank.app ❤️
-*/
 
 import * as fs from "fs";
 
@@ -18,7 +12,6 @@ interface metadata_info_type {
             value: string
         }>
     }
-    mint: string
 }
 
 interface trait_type {
@@ -34,11 +27,10 @@ interface collection_item_type {
         trait_type: string
         value: string | null
     }>
-    mint: string
     absolute_rank?: number
 }
 
-const collection: Array<metadata_info_type> = require('./nft-metadata-hodlmar.json')
+const collection: Array<metadata_info_type> = require('./rekt-dogs.json')
 
 const TOTAL_NFTS = collection.length
 
@@ -119,7 +111,6 @@ for (let nft of collection) {
     let shaped_nft_object: collection_item_type = {
         name: nft.metadata.name,
         image: nft.metadata.image,
-        mint: nft.mint,
         attributes: [...nft.metadata.attributes]
     }
     for (let shape_attribute of trait_shape) {
