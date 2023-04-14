@@ -144,7 +144,7 @@ module.exports = {
         .setFooter({
           text: "Tools powered by LoLo Labs",
           iconURL:
-            "<:polygonlogo:1078717237894062190>",
+            "https://cdn3d.iconscout.com/3d/premium/thumb/polygon-matic-coin-6445027-5326787.png",
         });
 
       await interaction.reply({ embeds: [rarityEmbed] });
