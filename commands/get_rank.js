@@ -7,23 +7,7 @@ const {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("rare")
-    .setDescription("Check the rarity of NFT")
-    .addStringOption((option) =>
-      option
-        .setName("collection")
-        .setDescription("Which collection ?")
-        .setRequired(true)
-        .setChoices(
-            {
-                name:"Brozo Collection",
-                value:"brozo"
-            },
-            {
-                name: "Rekt Dogs Collection",
-                value: "rektdog",
-            }
-        )
-    )
+    .setDescription("Check the rarity of your Baby Monkey")
     .addIntegerOption((option) =>
       option
         .setName("number")
@@ -33,21 +17,26 @@ module.exports = {
 
   async execute(interaction) {
     const numb = interaction.options.getInteger("number");
-    const collectionName = interaction.options.getString("collection");
-    let collection;
-    let collectionDisplayName;
+    const collection = require("../rarity-check/sorted_collection-baby.json");
+    const collectionDisplayName = "BabyMonkeys";
+    const collectionImage = "https://i.seadn.io/gcs/files/ed49b89e1c4ab1ba61dade1a43b66fa8.gif?auto=format&dpr=1&w=1920";
 
-    if (collectionName === "brozo") {
-      collection = require("../rarity-check/sorted_collection-brozo.json");
-      collectionDisplayName = "BROZO";
-      collectionImage = "https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://bafybeihohurxddbgetxj27tix2qybruhxwvln52m45glq65e5tptlaboku.ipfs.nftstorage.link/";
-    } else {
-      collection = require("../rarity-check/sorted_collection-rektdog.json");
-      collectionDisplayName = "Rekt Dogs";
-      collectionImage = "https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://bafybeig3ubxvctwfiklv657uqyrjt5crcjpxi7lv4ib224niprl6belkxa.ipfs.nftstorage.link/";
-    }
+    // if (collectionName === "brozo") {
+    //   collection = require("../rarity-check/sorted_collection-brozo.json");
+    //   collectionDisplayName = "BROZO";
+    //   collectionImage = "https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://bafybeihohurxddbgetxj27tix2qybruhxwvln52m45glq65e5tptlaboku.ipfs.nftstorage.link/";
+    // } else if (collectionName === "rektdog") {
+    //   collection = require("../rarity-check/sorted_collection-rektdog.json");
+    //   collectionDisplayName = "Rekt Dogs";
+    //   collectionImage = "https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://bafybeig3ubxvctwfiklv657uqyrjt5crcjpxi7lv4ib224niprl6belkxa.ipfs.nftstorage.link/";
+    // } else if (collectionName === "babymonkeys") {
+    //   collection = 
+    //   collectionDisplayName = "Baby Monkeys";
+    //   collectionImage = "https://img-cdn.magiceden.dev/rs:fill:400:400:0:0/plain/https://bafybeig3ubxvctwfiklv657uqyrjt5crcjpxi7lv4ib224niprl6belkxa.ipfs.nftstorage.link/";
+    // }
     
-    const TOTAL_NFTS = collection.length;
+    // const TOTAL_NFTS = collection.length;
+    const TOTAL_NFTS = 6969;
 
     let nft_rank = collection.findIndex(
       (nft) => nft.name === `${collectionDisplayName} #${numb}`

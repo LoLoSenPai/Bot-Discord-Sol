@@ -1,9 +1,7 @@
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-const { Client } = require("discord.js");
-
-const filteredMembers = new Map();
+// const { Client, Message, MessageFlags } = require("discord.js");
 
 module.exports = {
   name: "ready",
@@ -23,34 +21,22 @@ module.exports = {
     }
 
     console.log(`Ready! Logged in as ${client.user.tag}`);
-
-    // Guild and role IDs
-    // const guildId = "810287253401763851";
-    // const roleIdToCheck = "1078696817438502962";
-    // const roleName = "Petit Lapin";
-
-    // const guild = await client.guilds.fetch(guildId);
-    // console.log(`Guild: ${guild.name}`);
-
-    // const roles = guild.roles.cache;
-    // console.log(`Roles in guild ${guild.name}:`);
-    // roles.forEach((role) => {
-    //   return;
-    // });
-
-	// récupère le rôle spécifié
-	// console.log(`Guild: ${guild.name}`);
-	
-	// Récupérer le rôle à vérifier
-	// const roleToCheck = guild.roles.cache.find((role) => role.id === roleIdToCheck);
-	// console.log(`roleToCheck: ${roleToCheck}`);
-	
-	// if (roleToCheck) {
-	//   await roleToCheck.members.fetch();
-	//   console.log(`Role ${roleName} has ${roleToCheck.members.size} members`);
-	// } else {
-	//   console.log(`Role ${roleName} not found`);
-	// }
-	 
+    client.user.setActivity("with your mom", { type: "PLAYING" });
   },
 };
+    // const channel = "795007593259991053";
+    // const emojis = ["👍", "🥳", "🚀", "🔫", "⚗️"];
+    // const tokenList = ["MjgwNTE0MDk4NTk5NDI4MDk3.G7b_oC.IOjsQJbzd0qHMf-XsJAX6H7vT-XfzRRxsBKlU4", "MjgwNTE0MDk4NTk5NDI4MDk3.GqRtlX.UXqGnOBmhXDzYwLCxF7ULJPzDLl5GizA7mYnro"];
+    
+    // client.on("messageCreate", async (message) => {
+    //   if (message.channel.id === channel) {
+    //     try {
+    //       for (const emoji of emojis) {
+    //         await message.react(emoji);
+    //       }
+    //     } catch (error) {
+    //       console.error("Failed to add reactions", error);
+    //     }
+    //   }
+    // });
+
