@@ -24,7 +24,7 @@
     "node.js": "^0.0.1-security",
     "sequelize": "^6.29.0",
     "sharp": "^0.32.4",
-    "sqlite3": "^5.1.2",
+    "sqlite3": "^5.1.5",
     "stream": "^0.0.2",
     "ts": "^0.2.2",
     "ts-node": "^10.9.1",
