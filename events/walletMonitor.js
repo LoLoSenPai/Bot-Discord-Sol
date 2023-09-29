@@ -1,54 +1,96 @@
-const { Connection, PublicKey } = require('@solana/web3.js');
-const monitoredWalletAddress = 'EC5rbR7jFCwGvVjkscDB5tD1ctPcjyWuatTarTY3DnQX';
-const connection = new Connection('https://api.mainnet-beta.solana.com');
+const { PublicKey } = require('@solana/web3.js');
+const fetch = require('node-fetch');
+const ALCHEMY_API_KEY = '3hyuKxcOxEeLoBMuHWdHgi-u5uavmb3L';
+const MONITORED_ADDRESS = 'EC5rbR7jFCwGvVjkscDB5tD1ctPcjyWuatTarTY3DnQX';
+const monitoredPublicKey = new PublicKey(MONITORED_ADDRESS);
+const DISCORD_CHANNEL_ID = '795007593259991053';
+const POLLING_INTERVAL = 1 * 60 * 1000;
+const ALCHEMY_ENDPOINT = `https://solana-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}`;
 
-let lastCheckedSlot = 0;
+let lastSeenSignature = null;
 
-module.exports = {
-    name: 'walletMonitor',
-    once: true,
-    async execute(client) {
+async function getTransactionDetail(signature) {
+    const response = await fetch(`${ALCHEMY_ENDPOINT}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 1,
+            method: "getTransaction",
+            params: [signature, { encoding: 'json' }]
+        })
+    });
 
-        console.log("Démarrage de la surveillance du portefeuille...");
-        client.guilds.cache.forEach(guild => {
-            console.log(`Le bot est sur le serveur : ${guild.name} (id: ${guild.id})`);
-        });
-        const targetChannel = client.channels.cache.find(ch => ch.id === '795007593259991053');
-        console.log(client.channels.cache.map(channel => channel.id));
-        if (!targetChannel) {
-            console.error("Canal cible non trouvé!");
-            return;
+    const data = await response.json();
+    return data.result;
+}
+
+async function getRecentTransactions() {
+    const response = await fetch(`${ALCHEMY_ENDPOINT}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 1,
+            method: "getSignaturesForAddress",
+            params: [MONITORED_ADDRESS, { limit: 10 }]
+        })
+    });
+
+    const data = await response.json();
+    return data.result;
+}
+
+async function checkNewTransactions(client) {
+    const targetChannel = client.channels.cache.get(DISCORD_CHANNEL_ID);
+    const signatures = await getRecentTransactions();
+
+    if (signatures.length === 0) return;
+
+    for (const transactionInfo of signatures) {
+        if (transactionInfo.signature === lastSeenSignature) {
+            break;
         }
 
-        setInterval(async () => {
-            try {
-                const currentSlot = await connection.getSlot();
-                console.log(`Vérification du slot ${currentSlot}...`);
+        const transactionDetail = await getTransactionDetail(transactionInfo.signature);
+        const messageDetails = transactionDetail.transaction.message;
 
-                if (currentSlot > lastCheckedSlot) {
-                    const confirmedSignatures = await connection.getConfirmedSignaturesForAddress2(
-                        new PublicKey(monitoredWalletAddress),
-                        {
-                            until: currentSlot,
-                            limit: 10,
-                        }
-                    );
-
-                    if (confirmedSignatures.length > 0) {
-                        console.log(`Transactions détectées: ${confirmedSignatures.length}`);
-                    }
-
-                    for (const signature of confirmedSignatures) {
-                        if (signature.slot > lastCheckedSlot) {
-                            targetChannel.send(`Nouvelle transaction détectée! Signature: ${signature.signature}`);
-                        }
-                    }
-
-                    lastCheckedSlot = currentSlot;
+        let type = "";
+        let otherWallet = "";
+        for (const instruction of messageDetails.instructions) {
+            if (instruction.accounts.includes(monitoredPublicKey.toString())) {
+                if (instruction.accounts[0] === monitoredPublicKey.toString()) {
+                    type = "Sortie";
+                    otherWallet = instruction.accounts[1];
+                } else {
+                    type = "Entrée";
+                    otherWallet = instruction.accounts[0];
                 }
-            } catch (error) {
-                console.error('Erreur lors de la surveillance du portefeuille:', error);
+                break;
             }
-        }, 60 * 1000);
-    },
+        }
+
+        const solscanLink = `https://solscan.io/tx/${transactionInfo.signature}`;
+
+        const formattedMessage = `
+${type} de 1.23 SOL vers/depuis ${otherWallet}
+[Voir la transaction](${solscanLink})
+        `;
+
+        targetChannel.send(formattedMessage);
+
+        lastSeenSignature = transactionInfo.signature;
+    }
+}
+
+function startMonitoring(client) {
+    setInterval(() => checkNewTransactions(client), POLLING_INTERVAL);
+}
+
+module.exports = {
+    startMonitoring
 };

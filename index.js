@@ -2,7 +2,6 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 require("dotenv").config();
-const walletMonitor = require('./events/walletMonitor.js');
 
 const client = new Client({
   intents: [
@@ -39,9 +38,7 @@ for (const file of commandFiles) {
   client.commands.set(command.data.name, command);
 }
 
-client.login(process.env.token);
-
-walletMonitor.execute(client);
+client.login(process.env.TOKEN);
 
 // client.once("ready", () => {
 //   console.log(`Logged in as ${client.user.tag}`);
