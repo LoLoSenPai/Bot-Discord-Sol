@@ -18,7 +18,7 @@
     "fuse.js": "^6.6.2",
     "glob": "7.2.0",
     "keyv": "^4.5.0",
-    "mongoose": "^6.11.3",
+    "mongoose": "^6.12.0",
     "mysql": "^2.18.1",
     "node-fetch": "^2.7.0",
     "node.js": "^0.0.1-security",
