@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { startMonitoring } = require('./walletMonitor');
+// const { startMonitoring } = require('./walletMonitor');
 
 const mongoose = require("mongoose");
 
@@ -23,6 +23,6 @@ module.exports = {
     console.log(`Ready! Logged in as ${client.user.tag}`);
     client.user.setActivity("with your mom", { type: "PLAYING" });
 
-    startMonitoring(client);
+    // startMonitoring(client);
   },
 };
