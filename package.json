@@ -28,7 +28,7 @@
     "stream": "^0.0.2",
     "ts": "^0.2.2",
     "ts-node": "^10.9.1",
-    "undici": "5.10.0",
+    "undici": "5.26.2",
     "ws": "^8.13.0"
   },
   "devDependencies": {
